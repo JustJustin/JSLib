@@ -1,2 +1,2 @@
-# JustJSLib
+# JSLib
 My Simple JS Library

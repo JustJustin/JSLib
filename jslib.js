@@ -17,7 +17,6 @@ $js.extend = function(object, data){
         object[key] = val;
     }
 };
-
 $js.extend($js, {
     engine: /WebKit|Presto|Gecko/.exec(navigator.userAgent)[0].toLowerCase(),
     addClass: function(el, klass){
@@ -110,5 +109,17 @@ $js.extend($js, {
         });
         document.head.appendChild(style);
         return style;
-    }
-});
+    },
+    keycode: {left: 37, up: 38, right: 39, down: 40,
+              pgup: 33, pgdn: 34, end: 35, home: 36,
+              "~": 192, bspc: 8, spc: 32, del: 47, },
+    _keycode_init: function() {
+        var charfill = function (ch, code, limit) {
+            for (var i = 0; i < lim; ++i)
+                $js.keycode[String.fromCharCode(ch.charCodeAt()+i)] = code+i;
+        }
+        charfill('a', 65, 26); charfill('0', 48, 10); this._keycode_init = function() {};
+    },
+}); $js._keycode_init();
+
+
